@@ -40,5 +40,13 @@ pipeline {
 
           }
         }
+
+        stage("Sonar Code Analysis"){
+          steps {
+            withSonarQubeEnv("sonar"){
+              sh 'mvn clean package sonar:sonar'
+            }
+          }
+        }
     }
 }
